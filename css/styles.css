@@ -13,6 +13,7 @@ html {
   --additional-bg-color: #f5f4fa;
   --footer-bg-color: #2f303a;
   --blue-color: #2196f3;
+  --bg-blue-color: rgba(33, 150, 243, 0.9);
   --heading-text: #212121;
   --primary-text: #757575;
   --black-color: #000000;
@@ -25,6 +26,8 @@ html {
   --main-font-family: Roboto;
   --bold: 700;
   --primary-font-size: 16px;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration: 250ms;
 }
 
 body {
@@ -456,6 +459,39 @@ ul {
 .projects-item:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.project-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 63px 24px;
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  color: var(--primary-bg-color);
+  background-color: var(--bg-blue-color);
+  font-size: 18px;
+  line-height: 1.56;
+
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform var(--transition-duration) var(--timing-function),
+    opacity var(--transition-duration) var(--timing-function);
+}
+
+.projects-item:hover .overlay,
+.projects-item:focus .overlay {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .position {
