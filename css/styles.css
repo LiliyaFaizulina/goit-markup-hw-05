@@ -602,19 +602,26 @@ ul {
   height: 100vh;
 
   background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+
+  transition: opasity var(--transition-duration) var(--timing-function);
 }
 
-.is-hidden {
+.backdrop.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.7);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
 
   min-width: 528px;
   min-height: 581px;
@@ -624,6 +631,8 @@ ul {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  transition: transform var(--transition-duration) var(--timing-function);
 }
 
 .close-button {
